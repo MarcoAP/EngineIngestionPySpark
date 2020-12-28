@@ -1,0 +1,35 @@
+CREATE DATABASE IF NOT EXISTS rfzd_financeiro;
+CREATE TABLE IF NOT EXISTS rfzd_financeiro.margem_hora_hora_plu (
+DAT_VEND 			STRING 	COMMENT "Data da Venda"
+,HOR_VEND 			STRING 	COMMENT "hora da venda"
+,COD_LOJA			INT 	COMMENT "Código da Loja"
+,COD_CATEG			INT 	COMMENT "Código da Categoria"
+,NOM_CATEG			STRING 	COMMENT "Nome da Categoria"
+,COD_SCAT			INT		COMMENT "Código Subcategoria"
+,NOM_SCAT			STRING	COMMENT "Nome da Subcategoria"
+,COD_GRU 			INT 	COMMENT "Código do Grupo"
+,NOM_GRU 			STRING	COMMENT "Nome do Grupo"
+,COD_SUBGRU			INT 	COMMENT "Código do Subgrupo"
+,NOM_SUBGRU 		STRING	COMMENT "Nome do Subgrupo"
+,NOM_BU 			STRING	COMMENT "Nome BU"
+,NOM_BAND 			STRING 	COMMENT "Nome da Bandeira"
+,NOM_REG 			STRING 	COMMENT "Nome da Região"
+,NOM_MICRO_REG 		STRING 	COMMENT "Nome da Micro Região"
+,NOM_LOJA 			STRING 	COMMENT "Nome da Loja"
+,UF_LOJA 			CHAR(2)	COMMENT "UF da Loja"
+,COD_MULTIVAREJO 	INT		COMMENT "Código Agrupamento Multivarejo"
+,DESC_MULTIVAREJO 	STRING	COMMENT "Descrição Agrupameno Multivarejo"
+,COD_PLU 			BIGINT	COMMENT "Código do PLU"
+,NOM_PLU 			STRING  COMMENT "Nome do PLU"
+,QTD_ITEM 			DOUBLE	COMMENT "Quantidade item"
+,VAL_VEND  			DOUBLE	COMMENT "Valor da Venda"
+,VAL_DESCON 		DOUBLE 	COMMENT "Valor do Desconto"
+,VAL_VEND_BRUTA 	DOUBLE 	COMMENT "Valor da Venda Bruta"
+,VAL_CUSTO 			DOUBLE 	COMMENT "Valor do Custo"
+,VAL_IMP 			DOUBLE 	COMMENT "Valor do Imposto"
+,VAL_VEND_LIQ 		DOUBLE 	COMMENT "Valor Venda Liquida"
+,VAL_MARGM 			DOUBLE 	COMMENT "Valor da Margem"
+) PARTITIONED BY (dt_processamento STRING COMMENT "Data da ingestao")
+STORED AS PARQUET 
+TBLPROPERTIES ("parquet.compression"="SNAPPY", "COMMENT" = "Tabela com Descrição das Vendas por hora do Dia Vigente")
+;
